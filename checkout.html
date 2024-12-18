@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #f79c42;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 600;
+        }
+
+        .checkout-page {
+            padding: 30px;
+            max-width: 700px;
+            margin: 30px auto;
+            background: white;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .checkout-page h2 {
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .checkout-item {
+            margin-bottom: 20px;
+        }
+
+        .checkout-item p {
+            margin: 5px 0;
+        }
+
+        .checkout-page label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: 500;
+        }
+
+        .checkout-page input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .checkout-page button {
+            padding: 15px;
+            background-color: #f79c42;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .checkout-page button:hover {
+            background-color: #e68932;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Checkout</h1>
+    </header>
+
+    <div class="checkout-page">
+        <h2>Your Cart</h2>
+        <div id="cartItems"></div>
+
+        <label for="address">Delivery Address:</label>
+        <input type="text" id="address" placeholder="Enter delivery address">
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" placeholder="Enter phone number">
+
+        <button id="placeOrder">Place Order</button>
+    </div>
+
+    <script>
+        // Load cart items
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartItemsDiv = document.getElementById('cartItems');
+        if (cart.length === 0) {
+            cartItemsDiv.innerHTML = '<p>Your cart is empty.</p>';
+        } else {
+            cart.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'checkout-item';
+                itemDiv.innerHTML = `
+                    <p><strong>Name:</strong> ${item.name}</p>
+                    <p><strong>Weight:</strong> ${item.weight} kg</p>
+                    <p><strong>Quantity:</strong> ${item.quantity}</p>
+                `;
+                cartItemsDiv.appendChild(itemDiv);
+            });
+        }
+
+        // Save address and phone
+        document.getElementById('address').value = localStorage.getItem('deliveryAddress') || '';
+        document.getElementById('phone').value = localStorage.getItem('contactNumber') || '';
+
+        document.getElementById('placeOrder').addEventListener('click', function () {
+            const address = document.getElementById('address').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+
+            if (!address || !/^\d{10}$/.test(phone)) {
+                alert('Please enter a valid address and phone number.');
+                return;
+            }
+
+            // Save address and phone to localStorage
+            localStorage.setItem('deliveryAddress', address);
+            localStorage.setItem('contactNumber', phone);
+
+            // Clear cart and redirect to homepage
+            localStorage.removeItem('cart');
+            alert('Order placed successfully!');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
