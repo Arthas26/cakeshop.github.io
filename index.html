@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Layout and Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            color: #2e2e2e;
+        }
+
+        /* Header */
+        header {
+            background-color: #f79c42;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        header .header-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        header .header-content p {
+            font-size: 1.2rem;
+            margin-top: 0;
+            font-weight: 400;
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .categories h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .category-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            justify-items: center;
+            grid-template-rows: auto; /* Ensure that rows are adjusted properly */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 350px; /* Set a max width for consistency */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .category img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            aspect-ratio: 3 / 2; /* Maintains an aspect ratio of 3:2 */
+            max-height: 200px; /* Ensures images don't get too large */
+        }
+
+        .category h3 {
+            font-size: 1.6rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .category button {
+            background-color: #f79c42;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .category button:hover {
+            background-color: #e68932;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        footer .footer-links {
+            margin-bottom: 20px;
+        }
+
+        footer .footer-links a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: text-decoration 0.3s ease;
+        }
+
+        footer .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        footer p {
+            font-size: 1rem;
+            margin-top: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .category-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .category-list {
+                grid-template-columns: 1fr;
+            }
+
+            .category {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="header-content">
+            <h1>Cake Shop</h1>
+            <p>Your one-stop destination for fresh, delicious cakes and pastries.</p>
+        </div>
+    </header>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <h2>Our Categories</h2>
+        <div class="category-list">
+            <!-- Birthday Cakes -->
+            <div class="category">
+                <img src="https://via.placeholder.com/300x200?text=Birthday+Cakes" alt="Birthday Cakes">
+                <h3>Birthday Cakes</h3>
+                <button onclick="window.location.href='category.html?category=birthday-cakes'">Order Now</button>
+            </div>
+
+            <!-- Pastries -->
+            <div class="category">
+                <img src="https://via.placeholder.com/300x200?text=Pastries" alt="Pastries">
+                <h3>Pastries</h3>
+                <button onclick="window.location.href='category.html?category=pastries'">Order Now</button>
+            </div>
+
+            <!-- Cookies -->
+            <div class="category">
+                <img src="https://via.placeholder.com/300x200?text=Cookies" alt="Cookies">
+                <h3>Cookies</h3>
+                <button onclick="window.location.href='category.html?category=cookies'">Order Now</button>
+            </div>
+
+            <!-- Cupcakes -->
+            <div class="category">
+                <img src="https://via.placeholder.com/300x200?text=Cupcakes" alt="Cupcakes">
+                <h3>Cupcakes</h3>
+                <button onclick="window.location.href='category.html?category=cupcakes'">Order Now</button>
+            </div>
+
+            <!-- Cheesecakes -->
+            <div class="category">
+                <img src="https://via.placeholder.com/300x200?text=Cheesecakes" alt="Cheesecakes">
+                <h3>Cheesecakes</h3>
+                <button onclick="window.location.href='category.html?category=cheesecakes'">Order Now</button>
+            </div>
+
+            <!-- Vegan Cakes -->
+            <div class="category">
+                <img src="https://via.placeholder.com/300x200?text=Vegan+Cakes" alt="Vegan Cakes">
+                <h3>Vegan Cakes</h3>
+                <button onclick="window.location.href='category.html?category=vegan-cakes'">Order Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="about.html">About Us</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="contact.html">Contact Us</a>
+            </div>
+            <p>Address: 123 Cake Street, Sweet City, CA 12345</p>
+            <p>&copy; 2024 Cake Shop</p>
+        </div>
+    </footer>
+</body>
+</html>
